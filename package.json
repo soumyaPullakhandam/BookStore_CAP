@@ -1,0 +1,31 @@
+{
+  "name": "Bookstore",
+  "version": "1.0.0",
+  "dependencies": {
+    "@sap/cds": "^9",
+    "@sap/cds-common-content": "^3.2.0",
+    "typer": "^1.1.0"
+  },
+  "devDependencies": {
+    "@cap-js/sqlite": "^2.4",
+    "cds-plugin-ui5": "^0.17.0",
+    "@cap-js/cds-typer": ">=0.1"
+  },
+  "scripts": {
+    "start": "cds-serve",
+    "watch-bookstore-listview": "cds watch --open bookstorelistview/index.html?sap-ui-xx-viewCache=false --livereload false"
+  },
+  "private": true,
+  "workspaces": [
+    "app/*"
+  ],
+  "sapux": [
+    "app/bookstore-listview",
+    "app/bookstore-listview",
+    "app/bookstore-listview",
+    "app/project1"
+  ],
+  "imports": {
+    "#cds-models/*": "./@cds-models/*/index.js"
+  }
+}
