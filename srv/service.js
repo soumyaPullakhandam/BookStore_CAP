@@ -5,7 +5,7 @@ const { UPDATE, SELECT } = require('@sap/cds/lib/ql/cds-ql')
 module.exports = class BookstoreService extends cds.ApplicationService {
   init() {
 
-    const { Books, Authors, Genres, BookStatus, Chapters } = cds.entities('BookstoreService')
+    const { Books } = cds.entities('BookstoreService')
 
 
     this.on('addStock', Books, async (req) => {
@@ -34,6 +34,9 @@ module.exports = class BookstoreService extends cds.ApplicationService {
 
     })
 
+
+
+
      this.on('changePulishData', Books, async (req) => {
       
        const newDate = req.data.newDate
@@ -61,6 +64,43 @@ module.exports = class BookstoreService extends cds.ApplicationService {
       )    
 
     })
+
+
+
+
+
+     this.on('changeStatus', Books, async (req) => {
+      
+       const newStatus = req.data.newStatus
+       console.log('Changed Status is:', newStatus)
+       const bookID = req.params?.[0]?.ID
+
+      if (!bookID) {
+        return req.reject(400, 'Book ID is missing')
+      }
+
+      const tx = cds.tx(req)
+
+      const affectedRows = await tx.run(
+        UPDATE(Books)
+          .set({ status_code : newStatus})
+          .where({ ID: bookID })
+      )
+
+      if (!affectedRows) {
+        return req.reject(404, `Book with ID ${bookID} was not found`)
+      }
+
+      return tx.run(
+        SELECT.one.from(Books).where({ ID: bookID })
+      )    
+
+    })
+
+
+
+
+
 
     this.before('READ', Books, async (req) => {
       console.log('Before READ Books', req.data)

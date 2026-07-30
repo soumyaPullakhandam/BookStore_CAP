@@ -194,6 +194,11 @@ annotate service.Books with @(
             Action : 'BookstoreService.addStock',
             Label : 'addStock',
         },
+        {
+            $Type : 'UI.DataFieldForAction',
+            Action : 'BookstoreService.changeStatus',
+            Label : 'change Status',
+        },
     ],
 );
 

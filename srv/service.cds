@@ -7,8 +7,24 @@ service BookstoreService {
         actions {
             action addStock();
             action changePulishData(newDate: Date);
-            action changeStatus(newStatus : String);
-            
+            action changeStatus( @(Common: {
+                                     Text.@UI.TextArrangement : #TextOnly,
+                                     Label : 'New Status',
+                                     Text : status.displayText,
+                                     ValueListWithFixedValues: true,
+                                     ValueList         : {
+                                         $Type         : 'Common.ValueListType',
+                                         CollectionPath: 'BookStatus',
+                                         Parameters    : [{
+                                             $Type            : 'Common.ValueListParameterInOut',
+                                             LocalDataProperty: newStatus,
+                                             ValueListProperty: 'code',
+                                         }, ],
+                                     },
+                                     
+
+                                 }) newStatus: String);
+
         };
 
     entity Authors    as projection on db.Authors;
