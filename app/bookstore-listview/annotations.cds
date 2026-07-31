@@ -71,6 +71,11 @@ annotate service.Books with @(
         },
         {
             $Type : 'UI.DataField',
+            Label : 'price',
+            Value : price,
+        },
+        {
+            $Type : 'UI.DataField',
             Value : stock,
             Label : 'stock',
         },
@@ -88,11 +93,6 @@ annotate service.Books with @(
             $Type : 'UI.DataField',
             Label : 'pages',
             Value : pages,
-        },
-        {
-            $Type : 'UI.DataField',
-            Label : 'price',
-            Value : price,
         },
         {
             $Type : 'UI.DataField',
@@ -118,6 +118,11 @@ annotate service.Books with @(
             $Type : 'UI.DataFieldForAction',
             Action : 'BookstoreService.changeStatus',
             Label : 'changeStatus',
+        },
+        {
+            $Type : 'UI.DataFieldForAction',
+            Action : 'BookstoreService.EntityContainer/addDiscount',
+            Label : 'apply 10% Discount',
         },
     ],
     UI.SelectionFields : [
