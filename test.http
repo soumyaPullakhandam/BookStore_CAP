@@ -1,0 +1,34 @@
+GET http://localhost:4004/odata/v4/bookstore/$metadata
+
+####
+GET http://localhost:4004/odata/v4/bookstore/Chapters
+
+###
+GET http://localhost:4004/odata/v4/bookstore/Books?$count=true
+Authorization: Basic YWxpY2U6MTIz
+
+###
+GET http://localhost:4004/odata/v4/bookstore/Books?$top=2
+Authorization: Basic YWxpY2U6MTIz
+
+
+###
+POST  http://localhost:4004/odata/v4/bookstore/Books
+Authorization: Basic YWxpY2U6MTIz
+Content-Type: application/json
+
+{
+      "ID": "072ab462-6aa1-4671-89f3-372740864491",
+      "title": "Created from Test",
+      "author_ID": "18740699-5de4-44b3-bfcb-61d0e0236670",
+      "genre_code": "genre-2076482",
+      "publishedAt": "2021-08-26",
+      "pages": 52,
+      "price": 9457417.94,
+      "currency_code": "244",
+      "stock": 7,
+      "status_code": "U",
+      "HasActiveEntity": false,
+      "HasDraftEntity": false,
+      "IsActiveEntity": true
+}
